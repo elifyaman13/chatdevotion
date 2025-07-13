@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatdevotion - Empatik Yapay Zekâ Asistanı</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    @keyframes leafAnimation {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .animated-bg {
+      background: linear-gradient(-45deg, #9be15d, #00e3ae, #90ee90, #2ecc71);
+      background-size: 400% 400%;
+      animation: leafAnimation 15s ease infinite;
+    }
+  </style>
+</head>
+<body class="animated-bg text-white min-h-screen flex flex-row p-4">
+
+  <!-- SOL PANEL -->
+  <div class="w-64 bg-gray-800 rounded-lg p-4 flex flex-col">
+    <h2 class="text-lg font-semibold mb-4">Geçmiş Sohbetler</h2>
+    <ul class="flex-1 overflow-y-auto space-y-2">
+      {% for sid in chat_sessions.keys() %}
+        <li class="bg-gray-700 rounded px-3 py-2 flex justify-between items-center">
+          <a href="/select_chat/{{ sid }}" class="text-sm hover:underline">{{ sid }}</a>
+          <form method="POST">
+            <input type="hidden" name="delete_chat" value="{{ sid }}">
+            <button type="submit" class="text-red-400 text-xs hover:text-red-600 ml-2">Sil</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <!-- Aktif Sohbet -->
+    <div class="bg-indigo-700 text-white rounded px-3 py-2 font-semibold mt-4">
+      {{ active_session_id }} (aktif)
+    </div>
+
+    <!-- Yeni Sohbet Butonu -->
+    <form method="POST">
+      <button type="submit" name="new_chat" value="1" class="mt-4 bg-indigo-600 hover:bg-indigo-700 rounded-lg px-3 py-2 font-semibold">
+        Yeni Sohbet
+      </button>
+    </form>
+  </div>
+
+  <!-- ANA ALAN -->
+  <div class="w-full max-w-2xl flex flex-col flex-1 ml-4">
+    <div class="flex flex-col items-center mb-4">
+      <img src="/static/chatdevotion_logo.png" alt="Logo" class="w-16 h-16 rounded-full">
+      <h1 class="text-3xl font-bold mt-2">Chatdevotion</h1>
+      <p class="text-sm">Empatiyle konuşan yapay zekâ asistanı 💬</p>
+
+      <form method="POST" class="mt-2">
+        <select name="language" onchange="this.form.submit()" class="bg-gray-800 text-white rounded-md px-3 py-1 mt-1">
+          <option value="tr" {% if selected_language == 'tr' %}selected{% endif %}>Türkçe</option>
+          <option value="en" {% if selected_language == 'en' %}selected{% endif %}>English</option>
+        </select>
+      </form>
+
+      <button onclick="toggleTheme()" class="mt-2 px-3 py-1 rounded-lg bg-gray-800 text-sm shadow">
+        Temayı Değiştir
+      </button>
+    </div>
+
+    <!-- Mesajlar -->
+    <div id="chatMessages" class="bg-gray-900 rounded-xl p-4 space-y-3 overflow-y-auto max-h-[300px]">
+      {% for msg in chat_memory %}
+        <div class="flex {{ 'justify-end' if msg.role == 'user' else 'justify-start' }}">
+          <div class="max-w-[80%] rounded-lg p-3 {{ 'bg-indigo-600' if msg.role == 'user' else 'bg-purple-700' }} shadow-md">
+            <p>{{ msg.content }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Psikolojik Değerlendirme -->
+    {% if gpt_analysis %}
+      <div class="bg-green-800 text-green-100 rounded-xl p-4 mt-4 shadow-lg overflow-y-auto max-h-48">
+        <h2 class="font-semibold mb-2">🧠 Psikolojik Değerlendirme:</h2>
+        <p class="text-sm leading-relaxed">{{ gpt_analysis }}</p>
+      </div>
+    {% endif %}
+
+    <!-- Girdi Kutusu -->
+    <form method="POST" class="mt-4 flex flex-col gap-2">
+      <textarea name="user_input" placeholder="Bugün nasıl hissediyorsun?" required class="w-full h-24 bg-gray-800 text-white p-3 rounded-lg resize-none focus:ring-2 focus:ring-indigo-400"></textarea>
+      <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-2 font-semibold shadow-lg transition duration-300">Gönder</button>
+    </form>
+
+    <!-- Öneri Kartları -->
+    {% if suggestions %}
+      <h2 class="text-xl font-semibold mt-8 mb-4 text-gray-100">📌 Sana Özel Öneriler</h2>
+      <p class="text-sm text-gray-300 mb-2">Sana uygun öneriler bulundu: {{ suggestions | length }} adet</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {% for s in suggestions %}
+          <div class="bg-white text-gray-900 p-5 rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition duration-300 ease-in-out">
+            <div class="text-3xl mb-2">{{ s.icon }}</div>
+            <div class="font-bold text-lg mb-1">{{ s.title }}</div>
+            <div class="text-sm text-gray-700">{{ s.description }}</div>
+            <div class="text-xs mt-3 text-right italic text-gray-500">{{ s.type | capitalize }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <p class="text-xs text-gray-200 text-center mt-6">Chatdevotion © 2025 – OpenAI destekli</p>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('animated-bg');
+      document.body.classList.toggle('bg-gray-800');
+    }
+    const chatMessages = document.getElementById('chatMessages');
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  </script>
+</body>
+</html>
