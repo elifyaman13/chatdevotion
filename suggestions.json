@@ -1,0 +1,158 @@
+{
+    "motivation": [
+      {
+        "type": "film",
+        "title": "The Pursuit of Happyness",
+        "description": "Chris Gardner'in zorluklara rağmen oğluyla birlikte kurduğu umut dolu başarı hikayesi.",
+        "icon": "🎬"
+      },
+      {
+        "type": "film",
+        "title": "The Founder",
+        "description": "Ray Kroc'un McDonald's'ı global bir markaya dönüştürme serüveni.",
+        "icon": "🍔"
+      },
+      {
+        "type": "film",
+        "title": "3 Idiots",
+        "description": "Hayatın anlamını sorgulayan üç öğrencinin eğitim sistemiyle mücadele ettiği etkileyici hikaye.",
+        "icon": "🎓"
+      },
+      {
+        "type": "film",
+        "title": "Steve Jobs",
+        "description": "Bir dehanın kararlılıkla ve tutkuyla şekillendirdiği teknoloji dünyası.",
+        "icon": "💻"
+      },
+      {
+        "type": "film",
+        "title": "The Social Network",
+        "description": "Facebook'un kuruluş öyküsü ve girişimcilik vizyonu.",
+        "icon": "🌐"
+      },
+      {
+        "type": "music",
+        "title": "Beethoven - Symphony No. 5",
+        "description": "Azim ve zafer temasını işleyen güçlü klasik eser.",
+        "icon": "🎼"
+      },
+      {
+        "type": "music",
+        "title": "Wagner - Ride of the Valkyries",
+        "description": "Enerji ve coşku veren destansı orkestra müziği.",
+        "icon": "🎺"
+      },
+      {
+        "type": "book",
+        "title": "Man's Search for Meaning - Viktor Frankl",
+        "description": "Zorluklar içindeki insanın anlam arayışını anlatan ilham verici eser.",
+        "icon": "📖"
+      },
+      {
+        "type": "book",
+        "title": "The Power of Now - Eckhart Tolle",
+        "description": "Şimdiki anın gücünü fark ederek içsel dönüşüm sağlamak.",
+        "icon": "🧘"
+      },
+      {
+        "type": "quote",
+        "title": "Nelson Mandela",
+        "description": "It always seems impossible until it's done.",
+        "icon": "💬"
+      }
+    ],
+  
+    "sadness": [
+      {
+        "type": "film",
+        "title": "The Shawshank Redemption",
+        "description": "Umut ve özgürlük hayalleri ile geçen yılların dostlukla güç bulması.",
+        "icon": "🔓"
+      },
+      {
+        "type": "film",
+        "title": "Forrest Gump",
+        "description": "Masumiyet, kayıp ve sadakatle örülü bir hayat hikayesi.",
+        "icon": "🧢"
+      },
+      {
+        "type": "music",
+        "title": "Samuel Barber - Adagio for Strings",
+        "description": "Hüzünlü, derin duygular barındıran unutulmaz klasik eser.",
+        "icon": "🎻"
+      },
+      {
+        "type": "music",
+        "title": "Chopin - Prelude in E Minor",
+        "description": "Yumuşak ve içe dokunan piyano tınısı.",
+        "icon": "🎶"
+      },
+      {
+        "type": "book",
+        "title": "The Interpretation of Dreams - Sigmund Freud",
+        "description": "Duyguların bastırılması ve bilinçaltıyla yüzleşme.",
+        "icon": "📕"
+      },
+      {
+        "type": "quote",
+        "title": "Carl Jung",
+        "description": "The word 'happiness' would lose its meaning if it were not balanced by sadness.",
+        "icon": "🧠"
+      }
+    ],
+  
+    "anxiety": [
+      {
+        "type": "music",
+        "title": "Erik Satie - Gymnopédie No.1",
+        "description": "Rahatlatıcı, meditatif piyano melodisi.",
+        "icon": "🎹"
+      },
+      {
+        "type": "exercise",
+        "title": "Box Breathing Technique",
+        "description": "4 saniye nefes al, tut, ver ve bekle. Stres düşürmek için etkili bir teknik.",
+        "icon": "🫁"
+      },
+      {
+        "type": "book",
+        "title": "The Undiscovered Self - Carl Jung",
+        "description": "Modern bireyin içsel kaygılarına dair derinlikli bir inceleme.",
+        "icon": "📘"
+      },
+      {
+        "type": "film",
+        "title": "A Beautiful Mind",
+        "description": "John Nash'in gerçeklik ve zihinsel karışıklıkla olan mücadelesi.",
+        "icon": "🧠"
+      }
+    ],
+  
+    "loneliness": [
+      {
+        "type": "film",
+        "title": "Into the Wild",
+        "description": "Toplumdan uzaklaşarak kendini bulmaya çalışan bir adamın yolculuğu.",
+        "icon": "🏞️"
+      },
+      {
+        "type": "music",
+        "title": "Chopin - Nocturne Op.9 No.2",
+        "description": "Yalnızlığı yücelten zarif piyano solosu.",
+        "icon": "🎵"
+      },
+      {
+        "type": "book",
+        "title": "Memories, Dreams, Reflections - C.G. Jung",
+        "description": "Jung’un kendi içsel dünyasıyla hesaplaşması.",
+        "icon": "📗"
+      },
+      {
+        "type": "quote",
+        "title": "Rainer Maria Rilke",
+        "description": "The only journey is the one within.",
+        "icon": "📝"
+      }
+    ]
+  }
+  
