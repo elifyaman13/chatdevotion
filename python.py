@@ -1,4 +1,4 @@
-OPENAI_API_KEY="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"
+
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
